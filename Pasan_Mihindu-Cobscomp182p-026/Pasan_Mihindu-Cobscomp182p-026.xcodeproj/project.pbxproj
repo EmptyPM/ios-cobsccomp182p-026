@@ -15,6 +15,9 @@
 		6E70ED0923F51B5400A2EA7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E70ED0723F51B5400A2EA7D /* LaunchScreen.storyboard */; };
 		6E70ED1423F51B5500A2EA7D /* Pasan_Mihindu_Cobscomp182p_026Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E70ED1323F51B5500A2EA7D /* Pasan_Mihindu_Cobscomp182p_026Tests.swift */; };
 		6E70ED1F23F51B5500A2EA7D /* Pasan_Mihindu_Cobscomp182p_026UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E70ED1E23F51B5500A2EA7D /* Pasan_Mihindu_Cobscomp182p_026UITests.swift */; };
+		6E9CF23B23F5791B00591760 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CF23A23F5791B00591760 /* SignUpViewController.swift */; };
+		6E9CF23D23F5793B00591760 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CF23C23F5793B00591760 /* LoginViewController.swift */; };
+		6E9CF23F23F5795B00591760 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CF23E23F5795B00591760 /* DashboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		6E70ED1A23F51B5500A2EA7D /* Pasan_Mihindu-Cobscomp182p-026UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pasan_Mihindu-Cobscomp182p-026UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E70ED1E23F51B5500A2EA7D /* Pasan_Mihindu_Cobscomp182p_026UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasan_Mihindu_Cobscomp182p_026UITests.swift; sourceTree = "<group>"; };
 		6E70ED2023F51B5500A2EA7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E9CF23A23F5791B00591760 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		6E9CF23C23F5793B00591760 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6E9CF23E23F5795B00591760 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				6E70ECFB23F51B5400A2EA7D /* AppDelegate.swift */,
-				6E70ECFD23F51B5400A2EA7D /* ViewController.swift */,
+				6E9CF24023F5797900591760 /* View-Controllers */,
 				6E70ECFF23F51B5400A2EA7D /* Main.storyboard */,
 				6E70ED0523F51B5400A2EA7D /* Assets.xcassets */,
 				6E70ED0723F51B5400A2EA7D /* LaunchScreen.storyboard */,
@@ -126,6 +132,17 @@
 				6E70ED2023F51B5500A2EA7D /* Info.plist */,
 			);
 			path = "Pasan_Mihindu-Cobscomp182p-026UITests";
+			sourceTree = "<group>";
+		};
+		6E9CF24023F5797900591760 /* View-Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E70ECFD23F51B5400A2EA7D /* ViewController.swift */,
+				6E9CF23A23F5791B00591760 /* SignUpViewController.swift */,
+				6E9CF23C23F5793B00591760 /* LoginViewController.swift */,
+				6E9CF23E23F5795B00591760 /* DashboardViewController.swift */,
+			);
+			path = "View-Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +277,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E70ED0423F51B5400A2EA7D /* Pasan_Mihindu_Cobscomp182p_026.xcdatamodeld in Sources */,
+				6E9CF23F23F5795B00591760 /* DashboardViewController.swift in Sources */,
 				6E70ECFE23F51B5400A2EA7D /* ViewController.swift in Sources */,
+				6E9CF23B23F5791B00591760 /* SignUpViewController.swift in Sources */,
+				6E9CF23D23F5793B00591760 /* LoginViewController.swift in Sources */,
 				6E70ECFC23F51B5400A2EA7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
