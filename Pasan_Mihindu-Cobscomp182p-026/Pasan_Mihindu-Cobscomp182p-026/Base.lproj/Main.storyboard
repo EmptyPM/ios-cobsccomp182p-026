@@ -133,7 +133,7 @@
         <!--Dashboard View Controller-->
         <scene sceneID="EGW-k4-drg">
             <objects>
-                <viewController id="72R-iA-op0" customClass="DashboardViewController" customModule="Pasan_Mihindu_Cobscomp182p_026" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="72R-iA-op0" customClass="DashboardViewController" customModule="Pasan_Mihindu_Cobscomp182p_026" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="beP-Xg-VQ3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

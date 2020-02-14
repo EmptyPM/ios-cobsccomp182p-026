@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1038287139779:ios:d13ca30931dd8df89bc376</string>
+	<string>1:1038287139779:ios:b4d26db6d0b61cdb9bc376</string>
 	<key>DATABASE_URL</key>
 	<string>https://nibmevents.firebaseio.com</string>
 </dict>
