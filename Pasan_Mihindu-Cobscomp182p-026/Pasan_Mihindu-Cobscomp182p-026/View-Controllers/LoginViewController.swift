@@ -82,4 +82,8 @@ class LoginViewController: UIViewController {
     }
     
 }
+    
+    @IBAction func fogotPassword(_ sender: Any) {
+        
+    }
 }
