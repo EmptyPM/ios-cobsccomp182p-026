@@ -13,10 +13,12 @@ class ProfilePageViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var ProfileDView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
+        ProfileDView.layer.cornerRadius = 10
 
         
     }
