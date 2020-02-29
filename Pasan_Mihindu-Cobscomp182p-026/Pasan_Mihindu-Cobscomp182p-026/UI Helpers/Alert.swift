@@ -3,7 +3,7 @@
 //  Pasan_Mihindu-Cobscomp182p-026
 //
 //  Created by Minu Jayakody on 2/27/20.
-//  Copyright © 2020 Minu Jayakody. All rights reserved.
+//  Copyright © Pasan Mihindu. All rights reserved.
 //
 
 import Foundation

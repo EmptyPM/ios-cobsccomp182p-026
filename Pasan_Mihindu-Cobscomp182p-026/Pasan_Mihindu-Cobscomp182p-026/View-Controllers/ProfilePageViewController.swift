@@ -2,8 +2,8 @@
 //  ProfilePageViewController.swift
 //  Pasan_Mihindu-Cobscomp182p-026
 //
-//  Created by Minu Jayakody on 2/23/20.
-//  Copyright © 2020 Minu Jayakody. All rights reserved.
+//  Created by Pasan Mihindu on 2/23/20.
+//  Copyright © 2020 Pasan Mihindu. All rights reserved.
 //
 
 import UIKit
