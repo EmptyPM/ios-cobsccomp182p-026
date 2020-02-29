@@ -16,7 +16,7 @@ import Kingfisher
 class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
 
-    @IBOutlet weak var AddEventFromView: UIView!
+    
     @IBOutlet weak var EventNameTextField: UITextField!
     @IBOutlet weak var EventDateNTimeTextField: UITextField!
     @IBOutlet weak var EventCreatedByTextField: UITextField!
@@ -25,7 +25,8 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
     
     @IBOutlet weak var EventImgImageView: UIImageView!
     
-      var Eventimage: UIImage? = nil
+    @IBOutlet weak var addEventImageButton: UIButton!
+    var Eventimage: UIImage? = nil
     
     
     
@@ -36,7 +37,10 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
         
         
         // Corner Radius
-        AddEventFromView.layer.cornerRadius = 30
+//        AddEventFromView.layer.cornerRadius = 30
+        EventImgImageView.layer.cornerRadius = 20
+        
+        addEventImageButton.layer.cornerRadius = 5
         EventDescriptionTextArea.layer.cornerRadius = 5
         
         

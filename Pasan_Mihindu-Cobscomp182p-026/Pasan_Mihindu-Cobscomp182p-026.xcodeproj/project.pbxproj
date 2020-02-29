@@ -594,7 +594,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L7ZR6MX8MV;
 				INFOPLIST_FILE = "Pasan_Mihindu-Cobscomp182p-026/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,7 +614,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L7ZR6MX8MV;
 				INFOPLIST_FILE = "Pasan_Mihindu-Cobscomp182p-026/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

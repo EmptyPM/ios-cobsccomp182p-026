@@ -31,11 +31,11 @@ class ProfilePageViewController: UIViewController {
     
     @IBOutlet weak var AddEventButtonView: UIView!
     
-    @IBOutlet weak var DashBoardButton3: UIView!
+   
     
     @IBOutlet weak var MyEventsButtonView: UIView!
     
-    @IBOutlet weak var DashboardButton4: UIView!
+    
     
     
     
@@ -52,8 +52,7 @@ class ProfilePageViewController: UIViewController {
         
         AddEventButtonView.layer.cornerRadius = 10
         MyEventsButtonView.layer.cornerRadius = 10
-        DashBoardButton3.layer.cornerRadius = 10
-        DashboardButton4.layer.cornerRadius = 10
+        
         
         checkLoggedStatus()
         

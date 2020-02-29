@@ -23,11 +23,15 @@ class postcellTableViewCell: UITableViewCell {
     @IBOutlet weak var EventPostDescription: UILabel!
     @IBOutlet weak var EventPostCreatedBy: UILabel!
     
+    @IBOutlet weak var EventDetailsOverview: UIView!
     
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        EventPostImageView.layer.cornerRadius = 20
+        EventDetailsOverview.layer.cornerRadius = 20
         // Initialization code
     }
 
