@@ -10,9 +10,11 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 
 class SignUpViewController: UIViewController {
     
+    @IBOutlet weak var profilepicimage: UIImageView!
     
     @IBOutlet weak var firstNameTextField: UITextField!
     
@@ -21,6 +23,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBOutlet weak var MobileNumber: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -33,7 +36,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     
     
-    
+    var profileimage: UIImage? = nil
     
     
     
@@ -43,8 +46,29 @@ class SignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setElements()
+        
+        
+        
+//        profile image tap
+        
+        
+        profilepicimage.isUserInteractionEnabled = true
+        let profileimgtapGesture = UITapGestureRecognizer(target: self, action: #selector(presentimgPicker))
+        profilepicimage.addGestureRecognizer(profileimgtapGesture)
+        
     }
     
+    
+    @objc func presentimgPicker(){
+        
+        let profileimgpicker = UIImagePickerController()
+        profileimgpicker.sourceType = .photoLibrary
+        profileimgpicker.allowsEditing = true
+        profileimgpicker.delegate = self
+        self.present(profileimgpicker, animated: true , completion: nil)
+        
+        
+    }
     func setElements(){
         //error lable hide
         errorLabel.alpha = 0
@@ -53,8 +77,12 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(firstNameTextField)
         Utilities.styleTextField(lastNameTextField)
         Utilities.styleTextField(emailTextField)
+        Utilities.styleTextField(MobileNumber)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(signUpButton)
+        
+        
+        
     }
     
 
@@ -77,7 +105,8 @@ class SignUpViewController: UIViewController {
         if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            MobileNumber.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             
             return "Please fill in all fields"
         }
@@ -111,7 +140,19 @@ class SignUpViewController: UIViewController {
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let mobilenumber = MobileNumber.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            guard let attachImage = self.profileimage else{
+                
+                print("profile pic Not Attached")
+                return
+            }
+            guard let profileimagetype = attachImage.jpegData(compressionQuality: 0.75)else{
+                
+                return
+            }
+
             //Create the user
             Auth.auth().createUser(withEmail: email , password: password) { (result, err) in
                 
@@ -124,15 +165,41 @@ class SignUpViewController: UIViewController {
                 else{
                  let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["firstname" : firstName, "lastname":lastName, "uid": result!.user.uid]) { (error) in
+                    let dbref = Storage.storage().reference(forURL: "gs://nibmevents.appspot.com")
+                    let dbProfileRef = dbref.child("profilepics").child((result?.user.uid)!)
+                    
+                    let profiledbmatadata = StorageMetadata()
+                    profiledbmatadata.contentType = "image/jpg"
+                    
+                    dbProfileRef.putData(profileimagetype, metadata: profiledbmatadata, completion: { (StorageMetadata, error) in
                         
-                        if error != nil{
-                            self.showError(_message: "Error saving user data")
+                        if error != nil
+                        {
+                            print(error?.localizedDescription)
+                            return
                         }
                         
+                        dbProfileRef.downloadURL(completion: { (url, error) in
+                            
+                            if let profilepicmataimageUrl = url?.absoluteString{
+                                
+                                db.collection("users").document(result!.user.uid).setData(["firstname" : firstName, "lastname":lastName, "email":email, "mobilenumber" : mobilenumber, "profilepicimage" : profilepicmataimageUrl, "uid": result!.user.uid]) { (error) in
+                                    
+                                    if error != nil{
+                                        self.showError(_message: "Error saving user data")
+                                    }
+                                    
+                                    
+                                    
+                                }
+                                
+                            }
+                        })
                         
                         
-                    }
+                    })
+                    
+                    
                     
                     
                     //Transition to the home screen
@@ -154,14 +221,37 @@ class SignUpViewController: UIViewController {
     
     func trasitionToHome(){
         
+        let HomeVCCC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVCC")
+        self.present(HomeVCCC, animated: true, completion: nil)
         
-       let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? DashboardViewController
-        
-        
-        view.window?.rootViewController = homeViewController
-        view.window?.makeKeyAndVisible()
+//
+//       let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? MainHomeEventViewController
+//
+//
+//        view.window?.rootViewController = homeViewController
+//        view.window?.makeKeyAndVisible()
     }
     
     
     
+}
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let attachImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
+            
+            profileimage = attachImage
+            profilepicimage.image = attachImage
+        }
+        
+        if let profilepicOrg = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            
+            profileimage = profilepicOrg
+            profilepicimage.image = profilepicOrg
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

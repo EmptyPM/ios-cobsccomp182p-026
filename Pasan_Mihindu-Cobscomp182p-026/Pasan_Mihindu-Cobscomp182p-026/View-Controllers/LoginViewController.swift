@@ -72,11 +72,13 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
         }
             else{
-                let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? DashboardViewController
-                
-                
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()
+//                let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? MainHomeEventViewController
+//
+//
+//                self.view.window?.rootViewController = homeViewController
+//                self.view.window?.makeKeyAndVisible()
+                let HomeVCCC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVCC")
+                self.present(HomeVCCC, animated: true, completion: nil)
             }
         
     }

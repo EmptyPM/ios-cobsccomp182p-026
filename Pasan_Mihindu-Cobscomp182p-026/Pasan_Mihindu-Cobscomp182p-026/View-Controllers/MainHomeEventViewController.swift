@@ -18,6 +18,7 @@ class MainHomeEventViewController: UIViewController {
     @IBOutlet weak var UpcomingEventOneImageView: UIImageView!
     
     
+    
     @IBOutlet weak var UpcomingEventtwoImageView: UIImageView!
     
     
@@ -26,7 +27,7 @@ class MainHomeEventViewController: UIViewController {
         
         latestEventImageView.layer.cornerRadius = 30
         latestEventOverView.layer.cornerRadius = 30
-        UpcomingEventOneImageView.layer.cornerRadius = 25
+       UpcomingEventOneImageView.layer.cornerRadius = 25
         UpcomingEventtwoImageView.layer.cornerRadius = 25
         
     }

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
+            timestampString = "604492276.461573"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "signUpClick(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pasan_Mihindu_Cobscomp182p_026.SignUpViewController.signUpClick(Any) -&gt; ()"
+                  moduleName = "Pasan_Mihindu-Cobscomp182p-026"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user164673/Desktop/27/ios-cobsccomp182p-026/Pasan_Mihindu-Cobscomp182p-026/Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
+                  timestampString = "604490000.091275"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "3423">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Pasan_Mihindu_Cobscomp182p_026.SignUpViewController.signUpClick(Any) -&gt; ()"
+                  moduleName = "Pasan_Mihindu-Cobscomp182p-026"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user164673/Desktop/27/ios-cobsccomp182p-026/Pasan_Mihindu-Cobscomp182p-026/Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
+                  timestampString = "604490000.09463"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "308">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
+            timestampString = "604492276.461648"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "signUpClick(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Pasan_Mihindu_Cobscomp182p_026.SignUpViewController.signUpClick(Any) -&gt; ()"
+                  moduleName = "Pasan_Mihindu-Cobscomp182p-026"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user164673/Desktop/27/ios-cobsccomp182p-026/Pasan_Mihindu-Cobscomp182p-026/Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
+                  timestampString = "604490468.6894161"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "530">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Pasan_Mihindu_Cobscomp182p_026.SignUpViewController.signUpClick(Any) -&gt; ()"
+                  moduleName = "Pasan_Mihindu-Cobscomp182p-026"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user164673/Desktop/27/ios-cobsccomp182p-026/Pasan_Mihindu-Cobscomp182p-026/Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
+                  timestampString = "604490468.69309"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "83">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
+            timestampString = "604492276.461723"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "signUpClick(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
+            timestampString = "604492276.46178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "signUpClick(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

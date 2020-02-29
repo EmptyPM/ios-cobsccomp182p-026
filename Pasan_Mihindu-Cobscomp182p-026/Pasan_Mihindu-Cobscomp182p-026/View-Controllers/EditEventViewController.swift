@@ -9,9 +9,12 @@
 import UIKit
 
 class EditEventViewController: UIViewController {
-
+    @IBOutlet weak var EditEventScrollview: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         EditEventScrollview.layer.cornerRadius = 30
 
         // Do any additional setup after loading the view.
     }
