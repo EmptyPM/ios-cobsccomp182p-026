@@ -1922,7 +1922,7 @@
                                 <rect key="frame" x="0.0" y="144" width="375" height="668"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCx-h8-MAe">
-                                        <rect key="frame" x="16" y="156" width="341" height="22"/>
+                                        <rect key="frame" x="16" y="142" width="341" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="341" id="mvT-pH-ROJ"/>
                                             <constraint firstAttribute="height" constant="22" id="ypi-Mg-bS9"/>
@@ -1932,13 +1932,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dao-1m-B8D">
-                                        <rect key="frame" x="16" y="186" width="341" height="30"/>
+                                        <rect key="frame" x="16" y="172" width="341" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-C2-jC4">
-                                        <rect key="frame" x="16" y="224" width="341" height="22"/>
+                                        <rect key="frame" x="16" y="210" width="341" height="22"/>
                                         <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2011,7 +2011,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-Jz-w7o">
-                                        <rect key="frame" x="325" y="116" width="32" height="32"/>
+                                        <rect key="frame" x="341" y="116" width="16" height="18"/>
                                         <state key="normal" backgroundImage="upload">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
