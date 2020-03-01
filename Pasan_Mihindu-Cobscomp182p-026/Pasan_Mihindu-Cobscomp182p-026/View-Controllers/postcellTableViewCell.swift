@@ -23,6 +23,8 @@ class postcellTableViewCell: UITableViewCell {
     @IBOutlet weak var EventPostDescription: UILabel!
     @IBOutlet weak var EventPostCreatedBy: UILabel!
     
+    @IBOutlet weak var EventCreatedById: UILabel!
+    
     @IBOutlet weak var EventDetailsOverview: UIView!
     
     

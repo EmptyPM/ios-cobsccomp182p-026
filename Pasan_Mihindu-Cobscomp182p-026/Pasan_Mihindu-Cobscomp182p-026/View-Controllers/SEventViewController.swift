@@ -21,6 +21,7 @@ class SEventViewController: UIViewController {
     @IBOutlet weak var locationImageView: UIImageView!
     
     
+    @IBOutlet weak var cretedById: UILabel!
     
     @IBOutlet weak var editeventpobutton: UIButton!
     @IBOutlet weak var EventPName: UILabel!
@@ -51,6 +52,7 @@ class SEventViewController: UIViewController {
     var EventPoDescription = ""
     var EventPoLocation = ""
     var EventPoImageU = ""
+    var EventCreatedById = ""
     
     
     var editEventpName = ""
@@ -60,12 +62,17 @@ class SEventViewController: UIViewController {
     
     var currentUser = ""
     
+    let uid = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        cretedById.alpha = 0
         // current user loggedin
         
         currentLoggedUser()
+      
         
         // CornerRadius
         GoingButton.layer.cornerRadius = 10
@@ -84,12 +91,40 @@ class SEventViewController: UIViewController {
         EventPDescription.text = "\(EventPoDescription)"
         EventPLocation.text = "\(EventPoLocation)"
         EventPCreatedBy.text = "\(EventPoCreatedBy)"
+        cretedById.text = "\(EventCreatedById)"
+        
+      
         
         let posteventimageurl = URL(string: "\(EventPoImageU)")
         EventPImage.kf.setImage(with: posteventimageurl)
         
         
+       
         
+        
+        // get profile pic
+        
+    
+        let Userprofile = Firestore.firestore()
+        
+        let orofileRef = Userprofile.collection("users").document(cretedById.text!)
+        
+        
+        orofileRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                _ = document.data().map(String.init(describing:)) ?? "nil"
+                //                print("Document data: \(dataDescription)")
+                
+                let profilepic = (document.get("profilepicimage") as! String)
+                self.SingleEventUserProfileImageView.kf.setImage(with: URL(string: profilepic), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
+                
+            } else {
+                print("Document does not exist")
+                
+                
+            }
+        }
+      
         
 //         button hiddn
         
@@ -165,5 +200,7 @@ class SEventViewController: UIViewController {
         }
         
     }
-
+    
+    
+  
 }

@@ -25,6 +25,8 @@ struct EventPost {
     
     var EventPostCreatedBy : String
     
+    var EvenPostCrearedById : String
+    
     
     
 }
@@ -77,6 +79,8 @@ class AllPostViewController: UITableViewController {
         cell.EventPostDateTextField.text = EventPostArr[indexPath.row].EventPostDate
         cell.EventPostCreatedBy.text = EventPostArr[indexPath.row].EventPostCreatedBy
         cell.EventPostDescription.text = EventPostArr[indexPath.row].EventPostDescription
+        cell.EventCreatedById.text = EventPostArr[indexPath.row].EvenPostCrearedById
+        
         
         
 //
@@ -86,8 +90,8 @@ class AllPostViewController: UITableViewController {
 //        let eventimages = cell.EventPostImageView.kf.setImage(with: imagesURLS)
         
         
-        let postImageurl = URL(string: EventPostArr[indexPath.row].EventPostImage)
-        let EventPostimg = cell.EventPostImageView.kf.setImage(with: postImageurl);
+        let eventspostimage = URL(string: EventPostArr[indexPath.row].EventPostImage)
+        cell.EventPostImageView.kf.setImage(with: eventspostimage)
         
         return cell
     }
@@ -108,7 +112,8 @@ class AllPostViewController: UITableViewController {
         SViewController?.EventPoCreatedBy = EventPostArr[indexPath.row].EventPostCreatedBy
         SViewController?.EventPoDescription = EventPostArr[indexPath.row].EventPostDescription
         SViewController?.EventPoLocation = EventPostArr[indexPath.row].EventPostLocation
-        
+        SViewController?.EventPoImageU = EventPostArr[indexPath.row].EventPostImage
+        SViewController?.EventCreatedById = EventPostArr[indexPath.row].EvenPostCrearedById
 
 
 
@@ -135,13 +140,15 @@ class AllPostViewController: UITableViewController {
                     
                     let EventPostCreatedB = document.data()["ownername"] as! String
                     
+                    let EventPostCreatdBId = document.data()["createdById"] as! String
+                    
                     
                     
                     let EventPostImageUrl =  document.data()["EventImageurl"] as? String
                     
                     
                     
-                    let EventPosts = EventPost(EventPostName: EventPosttitel!, EventPostDate: EventPostDateNTime!, EventPostImage: EventPostImageUrl!, EventPostDescription: EventPostDes!, EventPostLocation: EventPostHLocation, EventPostCreatedBy: EventPostCreatedB)
+                    let EventPosts = EventPost(EventPostName: EventPosttitel!, EventPostDate: EventPostDateNTime!, EventPostImage: EventPostImageUrl!, EventPostDescription: EventPostDes!, EventPostLocation: EventPostHLocation, EventPostCreatedBy: EventPostCreatedB, EvenPostCrearedById: EventPostCreatdBId)
                     
                     self.EventPostArr.append(EventPosts)
                     

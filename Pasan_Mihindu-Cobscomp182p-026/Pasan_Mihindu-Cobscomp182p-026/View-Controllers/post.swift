@@ -16,9 +16,10 @@ class post {
     var EventPostDate: String
     var EVentPostLocation: String
     var EventPostCreatedBy : String
+    var EventCreatedById : String
 
     
-    init(EventPostImage: UIImage , EventPostName:String , EventPostDate:String , EVentPostLocation:String , EventPostCreatedBy:String , EventPostDescription:String) {
+    init(EventPostImage: UIImage , EventPostName:String , EventPostDate:String , EVentPostLocation:String , EventPostCreatedBy:String , EventPostDescription:String , EventCreatedById: String) {
         
         self.EventPostImage = EventPostImage
         self.EventPostName = EventPostName
@@ -26,6 +27,7 @@ class post {
         self.EventPostCreatedBy = EventPostCreatedBy
         self.EventPostDescription = EventPostDescription
         self.EVentPostLocation = EVentPostLocation
+        self.EventCreatedById = EventCreatedById
         
 
     }

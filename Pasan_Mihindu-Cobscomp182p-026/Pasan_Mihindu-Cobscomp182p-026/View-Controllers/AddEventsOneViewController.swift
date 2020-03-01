@@ -16,6 +16,8 @@ import Kingfisher
 class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
 
+    @IBOutlet weak var errorLbl: UILabel!
+    @IBOutlet weak var createdByID: UITextField!
     
     @IBOutlet weak var EventNameTextField: UITextField!
     @IBOutlet weak var EventDateNTimeTextField: UITextField!
@@ -35,6 +37,7 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        errorLbl.alpha = 0
         
         // Corner Radius
 //        AddEventFromView.layer.cornerRadius = 30
@@ -60,6 +63,8 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
         
         // get UserName
         
+        print(createdByID.text)
+        
         
         guard let uid = Auth.auth().currentUser?.uid else{ return }
         
@@ -74,6 +79,7 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
                 
                 
                 self.EventCreatedByTextField.text = (document.get("firstname") as! String)
+                self.createdByID.text = (document.get("uid") as! String)
                 
              
                 
@@ -88,32 +94,32 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
         
     }
     
-//    func validateThefields() -> String? {
+    func validateThefields() -> String? {
+
+        //        if firstNameTextField.text?.trimmingCharacters(in: .whitespaceAndNewlines) == "" {
+        //            return "Please fill in all field"
+        //        }
+
+        if EventNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            EventDateNTimeTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            EventCreatedByTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            EventDescriptionTextArea.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            EventLocationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+
+            return "Please fill in all fields"
+        }
+
+//        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 //
-//        //        if firstNameTextField.text?.trimmingCharacters(in: .whitespaceAndNewlines) == "" {
-//        //            return "Please fill in all field"
-//        //        }
+//        if Utilities.isPasswordValid(cleanedPassword) == false {
 //
-//        if EventNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-//            EventDateNTimeTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-//            EventCreatedByTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-//            EventDescriptionTextArea.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-//            EventLocationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-//
-//            return "Please fill in all fields"
+//            return "Please make sure your password is at least 8 characters contains special character and a numbers."
 //        }
-//
-////        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-////
-////        if Utilities.isPasswordValid(cleanedPassword) == false {
-////
-////            return "Please make sure your password is at least 8 characters contains special character and a numbers."
-////        }
-//
-//
-//
-//        return nil
-//    }
+
+
+
+        return nil
+    }
     
     @objc func pickerSelected(sender:UIDatePicker){
         let formatter = DateFormatter()
@@ -190,6 +196,8 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
         
         let eventHeldLocation =  EventLocationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        let createdById = createdByID.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         
         
         let metadata = StorageMetadata()
@@ -209,14 +217,14 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
             
             if error != nil
             {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
                 return
             }
             
             storageProfileRef.downloadURL(completion: { (url, error) in
                 
                 if let metaImageUrl = url?.absoluteString{
-                    database.collection("Events").document(Eventtitel).setData(["eventname":Eventtitel , "eventdate": eventDateNTime , "eventDescription": eventPostDescription, "ownername": eventCreateBy , "eventlocation": eventHeldLocation,"EventImageurl":metaImageUrl]) { (error) in
+                    database.collection("Events").document(Eventtitel).setData(["eventname":Eventtitel , "eventdate": eventDateNTime , "eventDescription": eventPostDescription, "ownername": eventCreateBy , "eventlocation": eventHeldLocation,"EventImageurl":metaImageUrl,"createdById": createdById]) { (error) in
                         
                         
                         if error != nil {
@@ -286,11 +294,24 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
         picker.dismiss(animated: true, completion: nil)
     }
     
+    func showError(_message:String){
+        errorLbl.text = _message
+        errorLbl.alpha = 1
+    }
     
     
     @IBAction func AddEventSaveButtonClick(_ sender: Any) {
         
-        AddNewEvent()
+        
+        let error = validateThefields()
+        
+        if error != nil {
+            
+            showError(_message: error!)
+        }else{
+            AddNewEvent()
+        }
+        
         
     }
     
