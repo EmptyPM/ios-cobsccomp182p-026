@@ -22,6 +22,7 @@ class SEventViewController: UIViewController {
     
     
     
+    @IBOutlet weak var editeventpobutton: UIButton!
     @IBOutlet weak var EventPName: UILabel!
     
     @IBOutlet weak var EventPCreatedBy: UILabel!
@@ -34,8 +35,11 @@ class SEventViewController: UIViewController {
     
     @IBOutlet weak var EventPImage: UIImageView!
     
+    @IBOutlet weak var sEventLikeButton: UIButton!
     
+    @IBOutlet weak var sEventShareButton: UIButton!
     
+    @IBOutlet weak var GoingButton: UIButton!
     
     var EventPImageView = UIImage()
     
@@ -46,11 +50,25 @@ class SEventViewController: UIViewController {
     var EventPoCreatedBy = ""
     var EventPoDescription = ""
     var EventPoLocation = ""
+    var EventPoImageU = ""
+    
+    
+    var editEventpName = ""
+    var editEventpDate = ""
+    var editEventpLocation = ""
+    var editEventDescription = ""
+    
+    var currentUser = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // current user loggedin
+        
+        currentLoggedUser()
         
         // CornerRadius
+        GoingButton.layer.cornerRadius = 10
         
         singleEventScrollView.layer.cornerRadius = 30
         SingleEventUserProfileImageView.layer.cornerRadius = 25
@@ -67,74 +85,85 @@ class SEventViewController: UIViewController {
         EventPLocation.text = "\(EventPoLocation)"
         EventPCreatedBy.text = "\(EventPoCreatedBy)"
         
+        let posteventimageurl = URL(string: "\(EventPoImageU)")
+        EventPImage.kf.setImage(with: posteventimageurl)
         
         
         
-//         Do any additional setup after loading the view.
-//        
-//        retriveUserData()
-//        checkLoggedInUserStatus()
+        
+//         button hiddn
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else{ return }
+        
+        
+        
+        let Eventdb = Firestore.firestore()
+        
+        let usertableref = Eventdb.collection("users").document(currentUser)
+        
+        usertableref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                _ = document.data().map(String.init(describing:)) ?? "nil"
+                //                print("Document data: \(dataDescription)")
+                
+                self.currentUser = (document.get("firstname") as! String)
+                
+                if(self.currentUser == self.EventPCreatedBy.text){
+                    
+                    self.editeventpobutton.alpha = 1
+                }else{
+                    
+                    self.editeventpobutton.alpha = 0
+                }
+                
+            } else {
+                print("Document does not exist")
+                
+                
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
 
         
     }
     
     @IBAction func EditEventPostButtonClick(_ sender: Any) {
+        editEventpName = EventPName.text!
+        editEventpDate = EventPDate.text!
+        editEventpLocation = EventPLocation.text!
+        editEventDescription = EventPDescription.text!
         
+        performSegue(withIdentifier: "EventEditViewConnection", sender: self)
+
         
     }
-//    func retriveUserData(){
-//
-//
-//
-//        guard let uid = Auth.auth().currentUser?.uid else{ return }
-//
-//        print(uid)
-//
-//        let db = Firestore.firestore()
-//
-//        let docRef = db.collection("users").document(uid)
-//
-//        print(docRef)
-//
-//        docRef.getDocument { (document, error) in
-//            if let document = document, document.exists {
-//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                print("Document data: \(dataDescription)")
-//
-//                self.loggedInUser = (document.get("firstname") as! String)
-//
-//                if(self.loggedInUser == self.ownername.text){
-//
-//                    print("works")
-//                    self.detailEditButton.alpha = 1
-//                }else{
-//
-//                    self.detailEditButton.alpha = 0
-//                }
-//
-//
-//            } else {
-//                print("Document does not exist")
-//
-//
-//            }
-//        }
-//
-//    }
-//
-//    fileprivate func checkLoggedInUserStatus(){
-//        if Auth.auth().currentUser == nil{
-//
-//            detailEditButton.alpha = 0
-//
-//        }else{
-//
-//            retriveUserData()
-//        }
-//
-//    }
-//
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let EditVCC = segue.destination as! EditEventViewController
+        EditVCC.editedEventName = self.editEventpName
+        EditVCC.editedEventDate = self.editEventpDate
+        EditVCC.editedEventLocation = self.editEventpLocation
+        EditVCC.editedEventDescription = self.editEventDescription
+    }
+
 
     
+    
+    fileprivate func currentLoggedUser(){
+        if Auth.auth().currentUser == nil{
+            
+            self.editeventpobutton.alpha = 0
+            
+            
+        }
+        
+    }
 
 }

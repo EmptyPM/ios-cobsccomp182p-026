@@ -12,13 +12,16 @@ class ProfileEditViewController: UIViewController {
     
     @IBOutlet weak var editProfileImageView: UIImageView!
     
+    @IBOutlet weak var SbuttonEditprofile: CustomButton!
     
-    @IBOutlet weak var sButtonAction: UIView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         editProfileImageView.layer.cornerRadius = editProfileImageView.frame.size.width/2
+        
+//        Utilities.styleFilledButton(SbuttonEditprofile)
 
         
         

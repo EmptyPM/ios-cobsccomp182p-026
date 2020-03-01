@@ -88,6 +88,33 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
         
     }
     
+//    func validateThefields() -> String? {
+//
+//        //        if firstNameTextField.text?.trimmingCharacters(in: .whitespaceAndNewlines) == "" {
+//        //            return "Please fill in all field"
+//        //        }
+//
+//        if EventNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+//            EventDateNTimeTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+//            EventCreatedByTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+//            EventDescriptionTextArea.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+//            EventLocationTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+//
+//            return "Please fill in all fields"
+//        }
+//
+////        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+////
+////        if Utilities.isPasswordValid(cleanedPassword) == false {
+////
+////            return "Please make sure your password is at least 8 characters contains special character and a numbers."
+////        }
+//
+//
+//
+//        return nil
+//    }
+    
     @objc func pickerSelected(sender:UIDatePicker){
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
@@ -194,7 +221,7 @@ class AddEventsOneViewController: UIViewController,UIImagePickerControllerDelega
                         
                         if error != nil {
                             
-print("error")
+                                print("error")
                         }else{
                             let HomeVCCC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVCC")
                             self.present(HomeVCCC, animated: true, completion: nil)

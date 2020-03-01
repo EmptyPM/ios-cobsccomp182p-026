@@ -47,6 +47,8 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
         setElements()
         
+        profilepicimage.layer.cornerRadius = profilepicimage.frame.size.width/2
+        
         
         
 //        profile image tap
@@ -86,15 +88,7 @@ class SignUpViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
     
     func validateThefields() -> String? {
         
@@ -160,7 +154,7 @@ class SignUpViewController: UIViewController {
                 if err != nil {
                     
                     
-                    self.showError(_message: "Error create user")
+                    self.showError(_message: "Something wrong in create user")
                 }
                 else{
                  let db = Firestore.firestore()
@@ -224,12 +218,7 @@ class SignUpViewController: UIViewController {
         let HomeVCCC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVCC")
         self.present(HomeVCCC, animated: true, completion: nil)
         
-//
-//       let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? MainHomeEventViewController
-//
-//
-//        view.window?.rootViewController = homeViewController
-//        view.window?.makeKeyAndVisible()
+
     }
     
     

@@ -26,29 +26,29 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NIBM EVENTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPS-rg-oVJ">
-                                <rect key="frame" x="46" y="400" width="283" height="50"/>
+                                <rect key="frame" x="16" y="401" width="343" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Gio-f5-PKO"/>
+                                    <constraint firstAttribute="height" constant="50" id="LYg-Ed-xhp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.019607843137254902" green="1" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="GPS-rg-oVJ" secondAttribute="trailing" constant="30" id="At4-Vv-h2R"/>
+                            <constraint firstItem="GPS-rg-oVJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="38s-vQ-kfw"/>
                             <constraint firstItem="Stf-Yo-Rqm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-100" id="HtZ-T2-zti"/>
-                            <constraint firstItem="GPS-rg-oVJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="30" id="LGB-89-lva"/>
-                            <constraint firstItem="GPS-rg-oVJ" firstAttribute="top" secondItem="Stf-Yo-Rqm" secondAttribute="bottom" constant="30" id="MkX-3d-km7"/>
                             <constraint firstItem="Stf-Yo-Rqm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="giI-sE-1iU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GPS-rg-oVJ" secondAttribute="trailing" constant="16" id="jee-ba-01Z"/>
+                            <constraint firstItem="GPS-rg-oVJ" firstAttribute="top" secondItem="Stf-Yo-Rqm" secondAttribute="bottom" constant="31" id="ngt-fb-kc6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>
     </scenes>
     <resources>

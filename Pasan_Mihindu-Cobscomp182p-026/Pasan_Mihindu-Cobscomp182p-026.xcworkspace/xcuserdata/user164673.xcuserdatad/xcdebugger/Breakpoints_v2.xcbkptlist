@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
-            timestampString = "604662451.2657501"
+            timestampString = "604717147.286307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "validateThefields()"
             landmarkType = "7">
             <Locations>
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
-            timestampString = "604662451.2658941"
+            timestampString = "604717147.2863981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "signUpClick(_:)"
-            landmarkType = "7">
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "SignUpViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -106,13 +106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
-            timestampString = "604662451.2659709"
+            timestampString = "604717147.286472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "signUpClick(_:)"
-            landmarkType = "7">
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "SignUpViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pasan_Mihindu-Cobscomp182p-026/View-Controllers/SignUpViewController.swift"
-            timestampString = "604662451.266046"
+            timestampString = "604717147.286544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "signUpClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
