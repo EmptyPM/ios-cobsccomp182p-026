@@ -215,7 +215,7 @@ class SignUpViewController: UIViewController {
     
     func trasitionToHome(){
         
-        let HomeVCCC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVCC")
+        let HomeVCCC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginvcc")
         self.present(HomeVCCC, animated: true, completion: nil)
         
 
