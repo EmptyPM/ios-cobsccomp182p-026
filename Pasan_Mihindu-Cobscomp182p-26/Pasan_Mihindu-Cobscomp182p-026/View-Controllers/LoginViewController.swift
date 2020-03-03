@@ -22,6 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var loginasGuest: UIButton!
     
 
     override func viewDidLoad() {
@@ -54,6 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleTextField(emailTextFieldL)
         Utilities.styleTextField(passwordTextfieldL)
         Utilities.styleFilledButton(loginButton)
+        Utilities.styleFilledButton(loginasGuest)
     }
     
 

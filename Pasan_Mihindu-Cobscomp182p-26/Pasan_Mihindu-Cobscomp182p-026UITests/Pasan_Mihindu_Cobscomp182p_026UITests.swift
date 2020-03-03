@@ -21,14 +21,46 @@ class Pasan_Mihindu_Cobscomp182p_026UITests: XCTestCase {
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
+    
+    func testValidloginsuccess(){
+        
+        let validPassword = "33pasan33##"
+        let validEmail = "pmihindub7@gmail.com"
+        
+        
+        let app = XCUIApplication()
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["Profile"].tap()
+        
+        let loginButton = app.buttons["Login"]
+        loginButton.tap()
+        let emailTextField = app.textFields["Email"]
+        XCTAssertTrue(emailTextField.exists )
+        
+        emailTextField.tap()
+        
+        emailTextField.typeText(validEmail)
+        
+        
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        XCTAssertTrue(passwordSecureTextField.exists)
+        
+        passwordSecureTextField.tap()
+        
+        
+        passwordSecureTextField.tap()
+        
+        passwordSecureTextField.typeText(validPassword)
+        loginButton.tap()
+        tabBarsQuery.buttons["Event"].tap()
+        
+        
+    }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    
 
 }

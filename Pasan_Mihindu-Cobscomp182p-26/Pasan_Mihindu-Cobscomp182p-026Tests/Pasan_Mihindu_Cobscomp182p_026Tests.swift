@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import Pasan_Mihindu_Cobscomp182p_026
 
 class Pasan_Mihindu_Cobscomp182p_026Tests: XCTestCase {
 

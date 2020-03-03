@@ -42,9 +42,20 @@ class SEventViewController: UIViewController {
     
     @IBOutlet weak var GoingButton: UIButton!
     
-    var EventPImageView = UIImage()
+    @IBOutlet weak var eventlikebutton: UIButton!
+    @IBOutlet weak var goingCount: UILabel!
     
+    @IBOutlet weak var pleasesignupalter: UILabel!
+    
+    @IBOutlet weak var likecountlbl: UILabel!
+    
+    
+    
+    
+    
+    var EventPImageView = UIImage()
     var CurrentLogedUser = ""
+    
     
     var EventPDateNT = ""
     var EventPoName = ""
@@ -61,29 +72,33 @@ class SEventViewController: UIViewController {
     var editEventDescription = ""
     
     var currentUser = ""
-    
     let uid = ""
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         cretedById.alpha = 0
-        // current user loggedin
         
+        
+        
+        // current user loggedin
         currentLoggedUser()
+        
+      
       
         
         // CornerRadius
         GoingButton.layer.cornerRadius = 10
-        
         singleEventScrollView.layer.cornerRadius = 30
         SingleEventUserProfileImageView.layer.cornerRadius = 25
         dateTimeImageView.layer.cornerRadius = 22
         locationImageView.layer.cornerRadius = 22
         
         
-        //
+        // event deatils
         
         EventPDate.text = "\(EventPDateNT)"
         EventPName.text = "\(EventPoName)"
@@ -93,7 +108,7 @@ class SEventViewController: UIViewController {
         EventPCreatedBy.text = "\(EventPoCreatedBy)"
         cretedById.text = "\(EventCreatedById)"
         
-      
+            print(cretedById.text)
         
         let posteventimageurl = URL(string: "\(EventPoImageU)")
         EventPImage.kf.setImage(with: posteventimageurl)
@@ -102,7 +117,7 @@ class SEventViewController: UIViewController {
        
         
         
-        // get profile pic
+        //  profile pic get
         
     
         let Userprofile = Firestore.firestore()
@@ -113,7 +128,7 @@ class SEventViewController: UIViewController {
         orofileRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"
-                //                print("Document data: \(dataDescription)")
+                
                 
                 let profilepic = (document.get("profilepicimage") as! String)
                 self.SingleEventUserProfileImageView.kf.setImage(with: URL(string: profilepic), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
@@ -126,7 +141,7 @@ class SEventViewController: UIViewController {
         }
       
         
-//         button hiddn
+//         button hidden
         
         guard let currentUser = Auth.auth().currentUser?.uid else{ return }
         
@@ -139,7 +154,7 @@ class SEventViewController: UIViewController {
         usertableref.getDocument { (document, error) in
             if let document = document, document.exists {
                 _ = document.data().map(String.init(describing:)) ?? "nil"
-                //                print("Document data: \(dataDescription)")
+                
                 
                 self.currentUser = (document.get("firstname") as! String)
                 
@@ -160,13 +175,12 @@ class SEventViewController: UIViewController {
         
         
         
-        
-        
-        
+        setUpProfileImage()
         
 
         
     }
+    
     
     @IBAction func EditEventPostButtonClick(_ sender: Any) {
         editEventpName = EventPName.text!
@@ -180,12 +194,28 @@ class SEventViewController: UIViewController {
     }
     
     
+    //event created by profile linked
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let EditVCC = segue.destination as! EditEventViewController
-        EditVCC.editedEventName = self.editEventpName
-        EditVCC.editedEventDate = self.editEventpDate
-        EditVCC.editedEventLocation = self.editEventpLocation
-        EditVCC.editedEventDescription = self.editEventDescription
+        
+        
+        
+        if segue.identifier == "EventEditViewConnection"{
+            
+            let vc = segue.destination as! EditEventViewController
+            
+            let EditVCC = segue.destination as! EditEventViewController
+            EditVCC.editedEventName = self.editEventpName
+            EditVCC.editedEventDate = self.editEventpDate
+            EditVCC.editedEventLocation = self.editEventpLocation
+            EditVCC.editedEventDescription = self.editEventDescription
+        }
+        else{
+            let vc = segue.destination as! CreatedUserProfileViewController
+
+            vc.ownerid = self.EventCreatedById
+        }
     }
 
 
@@ -200,6 +230,225 @@ class SEventViewController: UIViewController {
         }
         
     }
+    
+    
+    
+    func setUpProfileImage(){
+        
+        SingleEventUserProfileImageView.clipsToBounds = true
+        SingleEventUserProfileImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappprofileimage))
+        SingleEventUserProfileImageView.addGestureRecognizer(tapGesture)
+   
+        
+        
+    }
+    
+    @objc func tappprofileimage(){
+
+        
+        
+    }
+    
+    
+    @IBAction func imageclicklinktoprofile(_ sender: Any) {
+        
+        EventCreatedById = cretedById.text!
+        
+        performSegue(withIdentifier: "linkingcreatedbyprofile", sender: self)
+    }
+    
+    
+    
+    
+    
+    
+        // Going event
+    
+    @IBAction func EventGoingButton(_ sender: Any) {
+        isuserloged()
+        
+        
+        
+    }
+    
+    func isuserloged(){
+        
+        
+        if Auth.auth().currentUser == nil{
+            
+            
+            pleasesignupalter.text = "Please Signup"
+            pleasesignupalter.alpha = 1
+            
+            
+            
+            
+        }else{
+            
+            pleasesignupalter.alpha = 0
+            
+            goingCount.alpha = 1
+            
+            
+            
+            updateGoingCount()
+            
+            getGoingCount()
+            
+            
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    func updateGoingCount(){
+        
+        
+        
+        let database = Firestore.firestore().collection("Events").document(EventPName.text!)
+        
+        database.updateData(["goingCount": FieldValue.increment(Int64(1))]) { (err) in
+            
+            if let err = err {
+                
+                print(err.localizedDescription)
+            }else{
+                
+                
+                self.GoingButton.isUserInteractionEnabled = false
+                
+                
+            }
+            
+            
+            
+        }
+    }
+    
+    
+    
+    func getGoingCount(){
+        
+        let db = Firestore.firestore()
+        
+        let docRef = db.collection("Events").document(EventPName.text!)
+        
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                
+                
+                let count = ((document.get("goingCount") as! NSNumber))
+                
+                self.goingCount.text = count.stringValue
+                
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    
+    // like event
+    
+    @IBAction func EventLikeButtonClick(_ sender: Any) {
+        IsLikeButton()
+        
+    }
+    
+    
+    func IsLikeButton(){
+        
+        if Auth.auth().currentUser == nil{
+            
+            
+            pleasesignupalter.text = "Please Signup to like"
+            pleasesignupalter.alpha = 1
+            
+            
+            goingCount.alpha = 0
+            
+            
+        }else{
+            
+            pleasesignupalter.alpha = 0
+            
+            goingCount.alpha = 1
+            
+            
+            
+            updateLikeCount()
+            
+            getLikeCount()
+            
+        }
+        
+    }
+    
+    func updateLikeCount(){
+        
+        
+        let database = Firestore.firestore().collection("Events").document(EventPName.text!)
+        
+        database.updateData(["likecount": FieldValue.increment(Int64(1))]) { (err) in
+            
+            if let err = err {
+                
+                print(err.localizedDescription)
+            }else{
+                
+                
+                self.eventlikebutton.isUserInteractionEnabled = false
+                
+                
+            }
+            
+            
+            
+        }
+    }
+    
+    
+    
+    
+    func getLikeCount(){
+        
+        let db = Firestore.firestore()
+        
+        let docRef = db.collection("Events").document(EventPName.text!)
+        
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                
+                
+                let count = ((document.get("likecount") as! NSNumber))
+                
+                self.likecountlbl.text = count.stringValue
+                
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    
+    
+    
+    
     
     
   
